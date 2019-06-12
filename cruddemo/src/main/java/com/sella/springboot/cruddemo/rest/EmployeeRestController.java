@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sella.springboot.cruddemo.entity.Employee;
@@ -23,7 +24,7 @@ public class EmployeeRestController {
 	}
 	
 	// expose "/employees" and return list of employees
-	@GetMapping("/employees")
+	@RequestMapping(value = "/employees",method = RequestMethod.GET,produces = "application/xml")
 	public List<Employee> findAll() {
 		return employeeService.getAllEmpDetails();
 	}

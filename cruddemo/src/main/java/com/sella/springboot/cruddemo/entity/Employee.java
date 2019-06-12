@@ -7,8 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 @Entity
 @Table(name="employe")
+@JacksonXmlRootElement(localName = "EMPLOYEE")
 public class Employee {
 
 	// define fields
@@ -16,15 +20,19 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="employee_id")
+	@JacksonXmlProperty(isAttribute = true)
 	private int employee_id;
 	
 	@Column(name="first_name")
+	@JacksonXmlProperty
 	private String firstName;
 	
 	@Column(name="last_name")
+	@JacksonXmlProperty
 	private String lastName;
 	
 	@Column(name="email")
+	@JacksonXmlProperty
 	private String email;
 	
 	@Column(name="department_id")
@@ -93,7 +101,6 @@ public class Employee {
 	public void setDepartmentId(int departmentId) {
 		this.departmentId = departmentId;
 	}
-
 
 	@Override
 	public String toString() {
